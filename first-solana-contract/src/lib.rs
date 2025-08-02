@@ -35,7 +35,6 @@ pub fn counter_contract(
             program_data.counter += amount;
         },
         InstructionData::Decrement(amount) => {
-            let mut program_data = ProgramData::try_from_slice(& acc.data.borrow())?; 
             program_data.counter -= amount;
         },
     };
