@@ -6,7 +6,7 @@ import { ACC_SIZE, CounterAccount, schema } from './types';
 let adminKeyPair: Keypair;
 let counterAccountKeyPair: Keypair;
 
-test('should first', async () => { 
+test('check data account creation and value check', async () => { 
     adminKeyPair = Keypair.generate();
     counterAccountKeyPair = new Keypair();
     
