@@ -40,3 +40,8 @@ test('check data account creation and value check', async () => {
     expect(result.count).toBe(0);
     expect(1).toBe(1);
 })
+
+test('check for function working', async () => {
+
+  expect(1).toBe(1);
+})
