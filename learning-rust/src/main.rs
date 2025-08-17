@@ -11,6 +11,7 @@ macro_rules! generate_functions {
 // generate_functions!(foo, bar, baz);
 
 fn main() {
+    print!("Hello from main");
     foo();  // Prints: Hello from foo
     bar();  // Prints: Hello from bar
     baz();  // Prints: Hello from baz
