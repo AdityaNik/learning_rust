@@ -18,9 +18,6 @@ fn main() {
     generate_functions!(foo, bar, baz);
 }
 
-
-
-
 // use serde::{Serialize, Deserialize};
 
 // #[derive(Serialize, Deserialize, Debug)]
@@ -28,9 +25,6 @@ fn main() {
 //     username: String,
 //     password: String 
 // }
-
-
-
 
 // fn main() {
 //     let user = User {
@@ -71,8 +65,6 @@ fn main() {
 // }
 
 
-
-
 // trait Shape<T> {
 //     fn area(&self) -> T;
 // }
@@ -81,14 +73,11 @@ fn main() {
 //     height: T
 // }
 
-
 // impl<T: std::ops::Mul<Output = T> + Copy> Shape<T> for Rect<T> {
 //     fn area(&self) -> T {
 //         return self.width * self.height;
 //     }
 // }
-
-
 
 // struct Temp {
 //     width: f32,    
@@ -131,8 +120,6 @@ fn main() {
         //         return None;
         //     }
         // }
-
-
 
         
 
