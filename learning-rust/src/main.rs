@@ -12,6 +12,7 @@ macro_rules! generate_functions {
 
 fn main() {
     print!("Hello from main");
+    print!("Hello while trying vanila nvim");
     foo();  // Prints: Hello from foo
     bar();  // Prints: Hello from bar
     baz();  // Prints: Hello from baz
