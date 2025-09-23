@@ -1,24 +1,23 @@
-use solana_program:: {
-    account_info::{AccountInfo, next_account_info},
-    entrypoint,
-    entrypoint:: ProgramResult,
-    pubkey::Pubkey,
-    msg,
-};
 use borsh::{BorshDeserialize, BorshSerialize};
-
+use solana_program::{
+    account_info::{next_account_info, AccountInfo},
+    entrypoint,
+    entrypoint::ProgramResult,
+    msg,
+    pubkey::Pubkey,
+};
 
 #[derive(BorshDeserialize, BorshSerialize)]
 enum InstructionData {
     Increment(u32),
-    Decrement(u32), 
+    Decrement(u32),
 }
 
 #[derive(BorshDeserialize, BorshSerialize)]
 struct ProgramData {
     counter: u32,
 }
- 
+
 entrypoint!(counter_contract);
 
 pub fn counter_contract(
@@ -28,19 +27,23 @@ pub fn counter_contract(
 ) -> ProgramResult {
     let acc = next_account_info(&mut accounts.iter())?;
     let data = InstructionData::try_from_slice(intruction_data)?;
-    let mut program_data = ProgramData::try_from_slice(& acc.data.borrow())?; 
-    
+    let mut program_data = ProgramData::try_from_slice(&acc.data.borrow())?;
+
+    if acc.is_signer == false {
+        msg!("Account is not a signer");
+        return Err(solana_program::program_error::ProgramError::AccountAlreadyInitialized);
+    }
+
     match data {
         InstructionData::Increment(amount) => {
             program_data.counter += amount;
-        },
+        }
         InstructionData::Decrement(amount) => {
             program_data.counter -= amount;
-        },
+        }
     };
 
     program_data.serialize(&mut *acc.data.borrow_mut());
     msg!("Counter updated to {}", program_data.counter);
-
     Ok(())
 }
